@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest . --typescript --tailwind --app --no-src-dir --import-alias \"@/*\" --use-npm)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(test:*)",
+      "Bash(npm run dev:*)",
+      "Bash(mkdir:*)",
+      "Bash(cat:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(dir /b \"c:\\Users\\hmval\\OneDrive\\Desktop\\CertifiedTranslatorPros\\supabase\\migrations\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
