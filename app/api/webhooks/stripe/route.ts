@@ -13,13 +13,6 @@ const supabaseAdmin = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-// Disable body parsing - Stripe needs the raw body
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
 async function buffer(readable: ReadableStream) {
   const chunks: Uint8Array[] = [];
   const reader = readable.getReader();
