@@ -119,7 +119,7 @@ export default async function AdminCityEditPage({
                   >
                     <div>
                       <p className="font-medium text-gray-900">
-                        {translator.name}
+                        {translator.full_name}
                       </p>
                       <p className="text-sm text-gray-600">
                         {translator.languages.slice(0, 3).join(", ")}
