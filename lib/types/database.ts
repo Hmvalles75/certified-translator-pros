@@ -24,7 +24,7 @@ export interface Order {
   created_at: string;
   updated_at: string;
   customer_id: string;
-  translator_id: string | null;
+  assigned_to: string | null;
   status: OrderStatus;
   source_language: string;
   target_language: string;
@@ -59,24 +59,21 @@ export interface Translator {
   id: string;
   created_at: string;
   updated_at: string;
-  user_id: string;
-  name: string;
+  user_id: string | null;
+  full_name: string;
   email: string;
   phone: string | null;
-  city: string | null;
-  state: string | null;
-  country: string;
+  country: string | null;
   languages: string[];
-  specializations: DocumentType[];
-  services: string[];
-  certifications: string[];
+  rate_per_page: number;
+  can_rush: boolean;
+  can_notarize: boolean;
+  time_zone: string;
+  max_pages_per_day: number;
+  sample_certification: string | null;
+  certification_signature: string | null;
+  status: "pending" | "active" | "inactive";
   bio: string | null;
-  profile_photo: string | null;
-  website: string | null;
-  price_per_page: number | null;
-  hourly_rate: number | null;
-  is_public: boolean;
-  is_active: boolean;
 }
 
 export interface Notification {
