@@ -6,10 +6,10 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 const supabase = createClient();
 
-function LoginForm() {
+function AdminLoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirectTo = searchParams.get("redirectTo") || "/dashboard";
+  const redirectTo = searchParams.get("redirectTo") || "/admin/orders";
 
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
@@ -49,12 +49,12 @@ function LoginForm() {
           {/* Header */}
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-primary mb-2">
-              Translator Login
+              Admin Login
             </h1>
             <p className="text-gray-600">
               {linkSent
                 ? "Magic link sent to your email"
-                : "Sign in to access the translator dashboard"}
+                : "Sign in to access the admin dashboard"}
             </p>
           </div>
 
@@ -88,7 +88,7 @@ function LoginForm() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
-                  placeholder="translator@example.com"
+                  placeholder="admin@example.com"
                   disabled={loading}
                 />
               </div>
@@ -125,7 +125,7 @@ function LoginForm() {
                   We sent a magic link to <strong>{email}</strong>
                 </p>
                 <p className="text-sm text-gray-600">
-                  Click the link in the email to sign in to your dashboard.
+                  Click the link in the email to sign in to the admin dashboard.
                 </p>
               </div>
 
@@ -158,10 +158,10 @@ function LoginForm() {
   );
 }
 
-export default function LoginPage() {
+export default function AdminLoginPage() {
   return (
     <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center">Loading...</div>}>
-      <LoginForm />
+      <AdminLoginForm />
     </Suspense>
   );
 }
