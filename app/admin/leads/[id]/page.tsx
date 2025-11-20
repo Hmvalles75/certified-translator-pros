@@ -127,14 +127,14 @@ export default async function AdminLeadDetailPage({
               <div className="flex items-start justify-between">
                 <div>
                   <p className="font-semibold text-lg text-gray-900">
-                    {leadData.translators.name}
+                    {leadData.translators.full_name}
                   </p>
                   <p className="text-sm text-gray-600">
                     {leadData.translators.email}
                   </p>
-                  {leadData.translators.city && (
+                  {leadData.translators.country && (
                     <p className="text-sm text-gray-600 mt-1">
-                      {leadData.translators.city}, {leadData.translators.state}
+                      {leadData.translators.country}
                     </p>
                   )}
                 </div>
