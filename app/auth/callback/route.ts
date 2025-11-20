@@ -13,6 +13,8 @@ export async function GET(request: NextRequest) {
 
   if (code) {
     const cookieStore = await cookies();
+    const response = NextResponse.redirect(`${origin}${redirectTo}`);
+
     const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -22,30 +24,24 @@ export async function GET(request: NextRequest) {
             return cookieStore.get(name)?.value;
           },
           set(name: string, value: string, options: CookieOptions) {
-            try {
-              cookieStore.set({ name, value, ...options });
-            } catch (e) {
-              // Ignore cookie errors during read-only phases
-            }
+            cookieStore.set({ name, value, ...options });
+            response.cookies.set({ name, value, ...options });
           },
           remove(name: string, options: CookieOptions) {
-            try {
-              cookieStore.set({ name, value: "", ...options });
-            } catch (e) {
-              // Ignore cookie errors during read-only phases
-            }
+            cookieStore.set({ name, value: "", ...options });
+            response.cookies.set({ name, value: "", ...options });
           },
         },
       }
     );
+
     const { error } = await supabase.auth.exchangeCodeForSession(code);
 
     console.log("Auth callback - exchange result:", error ? `error: ${error.message}` : "success");
 
     if (!error) {
-      const redirectUrl = `${origin}${redirectTo}`;
-      console.log("Auth callback - redirecting to:", redirectUrl);
-      return NextResponse.redirect(redirectUrl);
+      console.log("Auth callback - redirecting to:", `${origin}${redirectTo}`);
+      return response;
     }
 
     console.log("Auth callback - auth error, redirecting to login with error");

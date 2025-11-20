@@ -11,36 +11,43 @@ function CallbackDebugContent() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const code = searchParams.get("code");
     const redirectTo = searchParams.get("redirectTo") || "/admin/orders";
-
-    if (!code) {
-      setError("No auth code found");
-      return;
-    }
-
     const supabase = createClient();
 
-    setStatus("Exchanging code for session...");
+    setStatus("Processing authentication...");
 
-    supabase.auth
-      .exchangeCodeForSession(code)
-      .then(({ data, error }) => {
-        if (error) {
-          setError(error.message);
-          setStatus("Error during auth");
-          return;
-        }
+    // Check if user is already authenticated
+    supabase.auth.getSession().then(({ data: { session }, error }) => {
+      if (error) {
+        setError(error.message);
+        setStatus("Error getting session");
+        return;
+      }
 
-        setStatus("Success! Redirecting...");
+      if (session) {
+        setStatus("Already authenticated! Redirecting...");
         setTimeout(() => {
           window.location.href = redirectTo;
-        }, 1000);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setStatus("Exception during auth");
-      });
+        }, 500);
+      } else {
+        setStatus("Waiting for authentication...");
+        setError("No active session found. Please try logging in again.");
+      }
+    });
+
+    // Listen for auth state changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_IN' && session) {
+        setStatus("Successfully signed in! Redirecting...");
+        setTimeout(() => {
+          window.location.href = redirectTo;
+        }, 500);
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, [searchParams, router]);
 
   return (

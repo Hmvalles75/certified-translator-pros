@@ -27,7 +27,7 @@ function AdminLoginForm() {
       const { error } = await supabase.auth.signInWithOtp({
         email,
         options: {
-          emailRedirectTo: `${window.location.origin}/auth/callback-debug?redirectTo=${encodeURIComponent(redirectTo)}`,
+          emailRedirectTo: `${window.location.origin}/auth/callback?redirectTo=${encodeURIComponent(redirectTo)}`,
         },
       });
 
