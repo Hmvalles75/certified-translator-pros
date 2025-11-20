@@ -11,7 +11,14 @@
       "Bash(npm uninstall:*)",
       "Bash(netstat:*)",
       "Bash(findstr:*)",
-      "Bash(dir /b \"c:\\Users\\hmval\\OneDrive\\Desktop\\CertifiedTranslatorPros\\supabase\\migrations\")"
+      "Bash(dir /b \"c:\\Users\\hmval\\OneDrive\\Desktop\\CertifiedTranslatorPros\\supabase\\migrations\")",
+      "Bash(git push:*)",
+      "Bash(vercel --version:*)",
+      "Bash(vercel --prod:*)",
+      "Bash(git commit:*)",
+      "Bash(git add:*)",
+      "Bash(dir /b \"c:\\Users\\hmval\\OneDrive\\Desktop\\CertifiedTranslatorPros\")",
+      "Bash(curl -X POST http://localhost:3003/api/debug/set-admin -H \"Content-Type: application/json\" -d \"{\"\"email\"\":\"\"hmvalles75@yahoo.com\"\"}\")"
     ],
     "deny": [],
     "ask": []

@@ -48,21 +48,21 @@ export default async function AdminOrderPage({
 
   const orderFiles = (files || []) as OrderFile[];
 
-  // Fetch available translators
+  // Fetch available translators (using new schema with status='active')
   const { data: translators } = await supabase
     .from("translators")
     .select("*")
-    .eq("is_active", true);
+    .eq("status", "active");
 
   const availableTranslators = (translators || []) as Translator[];
 
   // Fetch assigned translator if exists
   let assignedTranslator: Translator | null = null;
-  if (orderData.translator_id) {
+  if (orderData.assigned_to) {
     const { data: translator } = await supabase
       .from("translators")
       .select("*")
-      .eq("id", orderData.translator_id)
+      .eq("id", orderData.assigned_to)
       .single();
 
     assignedTranslator = translator as Translator;
@@ -184,7 +184,7 @@ export default async function AdminOrderPage({
                         Assigned Translator
                       </p>
                       <p className="text-lg font-bold text-green-800 mt-1">
-                        {assignedTranslator.name}
+                        {assignedTranslator.full_name}
                       </p>
                       <p className="text-sm text-green-700">
                         {assignedTranslator.email}
@@ -206,7 +206,7 @@ export default async function AdminOrderPage({
                   </div>
                   <div className="mt-3 text-sm text-green-700">
                     <p className="font-medium">Languages:</p>
-                    <p>{assignedTranslator.languages.join(", ")}</p>
+                    <p>{Array.isArray(assignedTranslator.languages) ? assignedTranslator.languages.join(", ") : assignedTranslator.languages}</p>
                   </div>
                 </div>
               ) : (
@@ -222,7 +222,7 @@ export default async function AdminOrderPage({
 
               <AssignTranslatorForm
                 orderId={orderData.id}
-                currentTranslatorId={orderData.translator_id}
+                currentTranslatorId={orderData.assigned_to}
                 translators={availableTranslators}
               />
             </div>

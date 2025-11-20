@@ -26,12 +26,12 @@ export async function POST(request: NextRequest) {
     // TODO: Add admin role check here
     // For now, we'll allow any authenticated user
 
-    // Verify translator exists and is active
+    // Verify translator exists and is active (using new schema)
     const { data: translator, error: translatorError } = await supabase
       .from("translators")
       .select("*")
       .eq("id", translator_id)
-      .eq("is_active", true)
+      .eq("status", "active")
       .single();
 
     if (translatorError || !translator) {
@@ -41,11 +41,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Update order with translator assignment
+    // Update order with translator assignment (using assigned_to field)
     const { error: updateError } = await supabase
       .from("orders")
       .update({
-        translator_id,
+        assigned_to: translator_id,
         status: "assigned",
         updated_at: new Date().toISOString(),
       })

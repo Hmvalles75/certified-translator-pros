@@ -95,7 +95,7 @@ export default function AssignTranslatorForm({
             <option value="">Choose a translator...</option>
             {translators.map((translator) => (
               <option key={translator.id} value={translator.id}>
-                {translator.name} - {translator.languages.join(", ")}
+                {translator.full_name} - {Array.isArray(translator.languages) ? translator.languages.slice(0, 2).join(", ") : translator.languages}
               </option>
             ))}
           </select>
