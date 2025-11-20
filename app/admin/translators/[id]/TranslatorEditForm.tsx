@@ -17,14 +17,11 @@ export default function TranslatorEditForm({
   const [success, setSuccess] = useState(false);
 
   const [formData, setFormData] = useState({
-    price_per_page: translator.price_per_page
-      ? (translator.price_per_page / 100).toString()
-      : "",
-    hourly_rate: translator.hourly_rate
-      ? (translator.hourly_rate / 100).toString()
-      : "",
-    is_public: translator.is_public,
-    is_active: translator.is_active,
+    rate_per_page: translator.rate_per_page.toString(),
+    status: translator.status,
+    can_rush: translator.can_rush,
+    can_notarize: translator.can_notarize,
+    max_pages_per_day: translator.max_pages_per_day.toString(),
   });
 
   const handleSubmit = async (e: FormEvent) => {
@@ -39,14 +36,11 @@ export default function TranslatorEditForm({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           translatorId: translator.id,
-          price_per_page: formData.price_per_page
-            ? Math.round(parseFloat(formData.price_per_page) * 100)
-            : null,
-          hourly_rate: formData.hourly_rate
-            ? Math.round(parseFloat(formData.hourly_rate) * 100)
-            : null,
-          is_public: formData.is_public,
-          is_active: formData.is_active,
+          rate_per_page: parseFloat(formData.rate_per_page),
+          status: formData.status,
+          can_rush: formData.can_rush,
+          can_notarize: formData.can_notarize,
+          max_pages_per_day: parseInt(formData.max_pages_per_day),
         }),
       });
 
@@ -81,15 +75,15 @@ export default function TranslatorEditForm({
       <div className="grid md:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Price per Page (USD)
+            Rate per Page (USD)
           </label>
           <input
             type="number"
             step="0.01"
             min="0"
-            value={formData.price_per_page}
+            value={formData.rate_per_page}
             onChange={(e) =>
-              setFormData({ ...formData, price_per_page: e.target.value })
+              setFormData({ ...formData, rate_per_page: e.target.value })
             }
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent"
             placeholder="29.00"
@@ -98,48 +92,64 @@ export default function TranslatorEditForm({
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Hourly Rate (USD)
+            Max Pages per Day
           </label>
           <input
             type="number"
-            step="0.01"
-            min="0"
-            value={formData.hourly_rate}
+            min="1"
+            value={formData.max_pages_per_day}
             onChange={(e) =>
-              setFormData({ ...formData, hourly_rate: e.target.value })
+              setFormData({ ...formData, max_pages_per_day: e.target.value })
             }
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent"
-            placeholder="50.00"
+            placeholder="10"
           />
         </div>
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          Status
+        </label>
+        <select
+          value={formData.status}
+          onChange={(e) =>
+            setFormData({ ...formData, status: e.target.value as "pending" | "active" | "inactive" })
+          }
+          className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent"
+        >
+          <option value="pending">Pending</option>
+          <option value="active">Active</option>
+          <option value="inactive">Inactive</option>
+        </select>
       </div>
 
       <div className="flex items-center gap-6">
         <label className="flex items-center gap-2 cursor-pointer">
           <input
             type="checkbox"
-            checked={formData.is_public}
+            checked={formData.can_rush}
             onChange={(e) =>
-              setFormData({ ...formData, is_public: e.target.checked })
+              setFormData({ ...formData, can_rush: e.target.checked })
             }
             className="w-5 h-5 text-accent border-gray-300 rounded focus:ring-accent"
           />
           <span className="text-sm font-medium text-gray-700">
-            Public Profile (visible on website)
+            Can handle rush orders
           </span>
         </label>
 
         <label className="flex items-center gap-2 cursor-pointer">
           <input
             type="checkbox"
-            checked={formData.is_active}
+            checked={formData.can_notarize}
             onChange={(e) =>
-              setFormData({ ...formData, is_active: e.target.checked })
+              setFormData({ ...formData, can_notarize: e.target.checked })
             }
             className="w-5 h-5 text-accent border-gray-300 rounded focus:ring-accent"
           />
           <span className="text-sm font-medium text-gray-700">
-            Active (can be assigned orders)
+            Can notarize documents
           </span>
         </label>
       </div>
