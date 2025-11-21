@@ -18,15 +18,16 @@ export default function Navbar() {
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24">
+        <div className="flex items-center justify-between h-28 md:h-32">
           {/* Logo */}
           <Link href="/" className="flex items-center group">
-            <div className="relative w-80 h-20 md:w-96 md:h-24">
+            <div className="relative w-96 h-24 md:w-[600px] md:h-28">
               <Image
                 src="/CTP-logo.png"
                 alt="CertifiedTranslatorPros"
                 fill
-                className="object-contain hover:opacity-80 transition"
+                className="object-contain object-left hover:opacity-80 transition"
+                priority
               />
             </div>
           </Link>
