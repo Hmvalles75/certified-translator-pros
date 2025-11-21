@@ -58,19 +58,21 @@ export default async function AdminTranslatorDetailPage({
           <div className="flex items-start justify-between mb-6">
             <div>
               <h1 className="text-3xl font-bold text-primary mb-2">
-                {translatorData.name}
+                {translatorData.full_name}
               </h1>
               <p className="text-gray-600">{translatorData.email}</p>
             </div>
             <div>
               <span
                 className={`px-4 py-2 rounded-full text-sm font-semibold ${
-                  translatorData.is_public
+                  translatorData.status === "active"
                     ? "bg-green-100 text-green-800"
+                    : translatorData.status === "pending"
+                    ? "bg-yellow-100 text-yellow-800"
                     : "bg-gray-100 text-gray-800"
                 }`}
               >
-                {translatorData.is_public ? "Public Profile" : "Private Profile"}
+                {translatorData.status.charAt(0).toUpperCase() + translatorData.status.slice(1)}
               </span>
             </div>
           </div>
@@ -89,34 +91,17 @@ export default async function AdminTranslatorDetailPage({
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-gray-600 mb-1">Location:</dt>
+                  <dt className="text-gray-600 mb-1">Country:</dt>
                   <dd className="font-medium text-gray-900">
-                    {translatorData.city && translatorData.state
-                      ? `${translatorData.city}, ${translatorData.state}`
-                      : translatorData.city || "Not provided"}
+                    {translatorData.country || "Not provided"}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-gray-600 mb-1">Country:</dt>
+                  <dt className="text-gray-600 mb-1">Time Zone:</dt>
                   <dd className="font-medium text-gray-900">
-                    {translatorData.country}
+                    {translatorData.time_zone}
                   </dd>
                 </div>
-                {translatorData.website && (
-                  <div>
-                    <dt className="text-gray-600 mb-1">Website:</dt>
-                    <dd className="font-medium text-gray-900">
-                      <a
-                        href={translatorData.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-accent hover:underline"
-                      >
-                        {translatorData.website}
-                      </a>
-                    </dd>
-                  </div>
-                )}
               </dl>
             </div>
 
@@ -133,56 +118,32 @@ export default async function AdminTranslatorDetailPage({
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-gray-600 mb-1">Specializations:</dt>
-                  <dd className="font-medium text-gray-900">
-                    {translatorData.specializations.length > 0
-                      ? translatorData.specializations.join(", ")
-                      : "None specified"}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-gray-600 mb-1">Services:</dt>
-                  <dd className="font-medium text-gray-900">
-                    {translatorData.services.length > 0
-                      ? translatorData.services.join(", ")
-                      : "None specified"}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-gray-600 mb-1">Price per Page:</dt>
+                  <dt className="text-gray-600 mb-1">Rate per Page:</dt>
                   <dd className="font-semibold text-gray-900 text-lg">
-                    {translatorData.price_per_page
-                      ? `$${(translatorData.price_per_page / 100).toFixed(2)}`
-                      : "Not set"}
+                    ${translatorData.rate_per_page.toFixed(2)}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-gray-600 mb-1">Hourly Rate:</dt>
-                  <dd className="font-semibold text-gray-900 text-lg">
-                    {translatorData.hourly_rate
-                      ? `$${(translatorData.hourly_rate / 100).toFixed(2)}`
-                      : "Not set"}
+                  <dt className="text-gray-600 mb-1">Max Pages per Day:</dt>
+                  <dd className="font-medium text-gray-900">
+                    {translatorData.max_pages_per_day}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-gray-600 mb-1">Can Handle Rush Orders:</dt>
+                  <dd className="font-medium text-gray-900">
+                    {translatorData.can_rush ? "Yes" : "No"}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-gray-600 mb-1">Can Notarize:</dt>
+                  <dd className="font-medium text-gray-900">
+                    {translatorData.can_notarize ? "Yes" : "No"}
                   </dd>
                 </div>
               </dl>
             </div>
           </div>
-
-          {/* Certifications */}
-          {translatorData.certifications.length > 0 && (
-            <div className="bg-background p-6 rounded-lg mb-8">
-              <h2 className="text-xl font-semibold text-primary mb-4">
-                Certifications
-              </h2>
-              <ul className="list-disc list-inside space-y-2">
-                {translatorData.certifications.map((cert, index) => (
-                  <li key={index} className="text-gray-700">
-                    {cert}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
 
           {/* Bio */}
           {translatorData.bio && (
