@@ -8,8 +8,7 @@ export default function FinalCTA() {
           Ready to get your documents translated?
         </h2>
         <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-          Join thousands of satisfied clients who trust CertifiedTranslatorPros
-          for fast, accurate, and certified translations.
+          Join people who trust CertifiedTranslatorPros for fast, accurate, and USCIS-ready certified translations.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

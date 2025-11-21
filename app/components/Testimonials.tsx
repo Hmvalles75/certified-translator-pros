@@ -5,17 +5,20 @@ export default function Testimonials() {
     {
       quote: "The translation was perfect and arrived faster than expected. USCIS accepted my documents without any issues. Highly recommend!",
       name: "Maria Rodriguez",
-      role: "Immigration Applicant"
+      role: "Green card applicant",
+      documents: "Birth & marriage certificates"
     },
     {
       quote: "As a law firm, we need accurate translations we can trust. CertifiedTranslatorPros delivers every time with professional quality.",
       name: "David Chen",
-      role: "Immigration Attorney"
+      role: "Immigration attorney",
+      documents: "Court & USCIS filings"
     },
     {
-      quote: "The local translator option was perfect for us. We met in person, got our documents certified, and had everything we needed in 48 hours.",
+      quote: "Super fast turnaround and the pricing was straightforward—no hidden fees or word count confusion. Got my diploma translated in 2 days.",
       name: "Sarah Johnson",
-      role: "Parent & Educator"
+      role: "Graduate student",
+      documents: "Diploma & transcripts"
     }
   ];
 
@@ -23,7 +26,7 @@ export default function Testimonials() {
     <SectionContainer background="gray">
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-          What our clients say
+          Real results from immigration applicants and attorneys
         </h2>
       </div>
 
@@ -40,6 +43,9 @@ export default function Testimonials() {
               </p>
               <p className="text-sm text-gray-600">
                 {testimonial.role}
+              </p>
+              <p className="text-xs text-gray-500 mt-1">
+                {testimonial.documents}
               </p>
             </div>
           </div>

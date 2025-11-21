@@ -15,11 +15,10 @@ export default function FindLocalTranslator() {
     <SectionContainer background="white">
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-          Need a local translator? Browse our verified directory.
+          Need a local translator?
         </h2>
         <p className="text-gray-600 mb-8">
-          Find certified translators in your city for in-person services, notarization,
-          and face-to-face consultations. All vetted professionals.
+          Prefer in-person services or notarization? Use our directory of local certified translators for face-to-face consultations. All vetted professionals.
         </p>
 
         <form onSubmit={handleSearch} className="bg-background p-6 rounded-lg shadow-sm">

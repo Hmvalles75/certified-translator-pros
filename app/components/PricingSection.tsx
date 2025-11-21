@@ -10,8 +10,11 @@ export default function PricingSection() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">
             Transparent Pricing
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-            Choose the service that fits your needs. No hidden fees, no surprises.
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-3">
+            USCIS certified translation services for birth certificates, marriage certificates, diplomas, and more.
+          </p>
+          <p className="text-gray-600">
+            No hidden fees, no surprises.
           </p>
         </div>
 
@@ -34,8 +37,11 @@ export default function PricingSection() {
                 <span className="text-5xl font-bold text-primary">$29.00</span>
                 <span className="text-xl text-gray-600">/ page</span>
               </div>
-              <p className="text-gray-600">
-                Up to 250 words per page. For official documents requiring certification (USCIS, courts, schools)
+              <p className="text-gray-600 mb-2">
+                For official documents requiring certification (USCIS, courts, schools)
+              </p>
+              <p className="text-sm text-gray-500">
+                Up to 250 words per page. Most vital records fit on 1 page.
               </p>
             </div>
 

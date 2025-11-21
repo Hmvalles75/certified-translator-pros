@@ -37,32 +37,41 @@ export default function Hero() {
             </p>
 
             {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <Button href="/order/certified" variant="primary">
+            <div className="flex flex-col sm:flex-row gap-4 mb-6">
+              <Button href="/order/certified" variant="primary" className="text-lg px-8 py-4">
                 Order Certified Translation
               </Button>
               <Button
                 href="/find-a-translator"
                 variant="outline"
-                className="bg-white/10 border-white text-white hover:bg-white hover:text-primary"
+                className="bg-white/10 border-white/50 text-white hover:bg-white/20 text-base"
               >
                 Find a Local Translator
               </Button>
             </div>
 
+            {/* Micro-trust line */}
+            <p className="text-sm text-white/80 mb-8 flex flex-wrap items-center gap-2">
+              <span className="font-medium">USCIS acceptance guarantee</span>
+              <span className="text-white/40">•</span>
+              <span>Secure payment via Stripe</span>
+              <span className="text-white/40">•</span>
+              <span>24–48 hour delivery</span>
+            </p>
+
             {/* Trust Row */}
             <div className="flex flex-wrap gap-6 text-sm">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-accent" />
-                <span>USCIS acceptance guaranteed</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-accent" />
-                <span>35+ languages</span>
+                <span>100+ languages</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-accent" />
                 <span>Human translators only</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-accent" />
+                <span>No hidden fees</span>
               </div>
             </div>
           </div>
