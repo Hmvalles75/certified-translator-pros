@@ -2,6 +2,7 @@
 // Changes: Hero redesigned with photo left/pricing card right, added PricingSection
 // Updated copy throughout for brand alignment (USCIS-ready, human translators, transparency)
 
+import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import HowItWorks from "./components/HowItWorks";
 import PricingSection from "./components/PricingSection";
@@ -17,19 +18,22 @@ import FinalCTA from "./components/FinalCTA";
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
-      <HowItWorks />
-      <PricingSection />
-      <WhyChooseUs />
-      <PopularServices />
-      <Services />
-      <FindLocalTranslator />
-      <WhoWeServe />
-      <QualitySecurity />
-      <Testimonials />
-      <FAQ />
-      <FinalCTA />
-    </main>
+    <>
+      <Navbar />
+      <main>
+        <Hero />
+        <HowItWorks />
+        <PricingSection />
+        <WhyChooseUs />
+        <PopularServices />
+        <Services />
+        <FindLocalTranslator />
+        <WhoWeServe />
+        <QualitySecurity />
+        <Testimonials />
+        <FAQ />
+        <FinalCTA />
+      </main>
+    </>
   );
 }

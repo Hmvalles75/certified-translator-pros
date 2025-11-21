@@ -72,7 +72,7 @@ export default function FAQ() {
 
   return (
     <SectionContainer background="white">
-      <div className="text-center mb-12">
+      <div id="faq" className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
           Frequently asked questions
         </h2>
