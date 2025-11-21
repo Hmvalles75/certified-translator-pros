@@ -7,6 +7,7 @@ import HowItWorks from "./components/HowItWorks";
 import PricingSection from "./components/PricingSection";
 import WhyChooseUs from "./components/WhyChooseUs";
 import Services from "./components/Services";
+import PopularServices from "./components/PopularServices";
 import FindLocalTranslator from "./components/FindLocalTranslator";
 import WhoWeServe from "./components/WhoWeServe";
 import QualitySecurity from "./components/QualitySecurity";
@@ -21,6 +22,7 @@ export default function Home() {
       <HowItWorks />
       <PricingSection />
       <WhyChooseUs />
+      <PopularServices />
       <Services />
       <FindLocalTranslator />
       <WhoWeServe />
