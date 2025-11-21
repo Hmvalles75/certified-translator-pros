@@ -31,10 +31,10 @@ export default function Navbar() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-lg md:text-xl font-bold leading-tight" style={{ color: '#59B19B' }}>
+              <span className="text-xl md:text-2xl font-bold leading-tight" style={{ color: '#59B19B' }}>
                 Certified Translator Pros
               </span>
-              <span className="text-xs md:text-sm font-medium leading-tight" style={{ color: '#2A2E33' }}>
+              <span className="text-[10px] md:text-xs font-medium leading-tight" style={{ color: '#2A2E33' }}>
                 Certified Translations. Guaranteed Acceptance.
               </span>
             </div>
