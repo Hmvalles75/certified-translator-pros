@@ -47,7 +47,7 @@ export default async function TranslatorOrderDetailPage({
   const orderData = order as Order;
 
   // Verify this order is assigned to current translator
-  if (orderData.translator_id !== translator.id) {
+  if (orderData.assigned_to !== translator.id) {
     redirect("/dashboard/translator/assignments");
   }
 
