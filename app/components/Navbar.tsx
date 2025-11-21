@@ -23,19 +23,19 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-12 h-12 md:w-16 md:h-16 flex-shrink-0">
               <Image
-                src="/CTP-logo.png"
+                src="/CTP-logo-icon.png"
                 alt="CertifiedTranslatorPros"
                 fill
-                className="object-contain hover:opacity-80 transition"
+                className="object-contain hover:opacity-90 transition"
                 priority
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-xl md:text-2xl font-bold text-primary leading-tight">
-                CertifiedTranslatorPros
+              <span className="text-lg md:text-xl font-bold leading-tight" style={{ color: '#59B19B' }}>
+                Certified Translator Pros
               </span>
-              <span className="text-xs md:text-sm text-gray-600">
-                Professional Translation Services
+              <span className="text-xs md:text-sm font-medium leading-tight" style={{ color: '#2A2E33' }}>
+                Certified Translations. Guaranteed Acceptance.
               </span>
             </div>
           </Link>
