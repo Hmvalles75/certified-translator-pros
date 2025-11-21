@@ -18,17 +18,25 @@ export default function Navbar() {
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-28 md:h-32">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center group">
-            <div className="relative w-96 h-24 md:w-[600px] md:h-28">
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="relative w-12 h-12 md:w-16 md:h-16 flex-shrink-0">
               <Image
                 src="/CTP-logo.png"
                 alt="CertifiedTranslatorPros"
                 fill
-                className="object-contain object-left hover:opacity-80 transition"
+                className="object-contain hover:opacity-80 transition"
                 priority
               />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-xl md:text-2xl font-bold text-primary leading-tight">
+                CertifiedTranslatorPros
+              </span>
+              <span className="text-xs md:text-sm text-gray-600">
+                Professional Translation Services
+              </span>
             </div>
           </Link>
 
